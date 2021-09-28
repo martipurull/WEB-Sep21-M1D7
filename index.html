@@ -43,6 +43,9 @@
     <button onclick="toggleSelectedClassToDemoId()">Toggle 'selected'</button>
 
     <input type="button" value="Toggle all DIVs" onclick="toggleSelectedClassToEachH2()" /> 
+    
+    <button id="element-creation-button" onclick="createNewElement()">Create new element</button>
+
     <div>
       <h2 id="demo-id">ID (#demo-id)</h2>
       <div>Access me by ID</div>
@@ -102,6 +105,37 @@
             for (let header of headers) {
                 header.classList.toggle("selected")
             }
+        }
+
+        let createNewElement = function() {
+
+            // HERE WE ARE CREATING A NEW HTML ELEMENT (A NODE)
+            // It will only live in memory, and be destroyed
+            // UNLESS we attach it to some element in the DOM
+
+            let newElement = document.createElement("div")
+            // <div></div>
+
+            newElement.innerText = "Hi, I'm the new guy here"
+            // <div>Hi, I'm the new guy here</div>
+
+            newElement.style.color = "lightblue"
+            // <div style="color:lightblue;">Hi, I'm the new guy here</div>
+
+            // HERE WE ARE ATTACHING THE NEWLY CREATED ELEMENT TO THE DOM
+            // From now on, it will show up in the page
+
+            // Let's find its parent...
+            let parent = document.getElementById("demo-id")
+
+            // ...and then we attach the newly created DIV to it
+            parent.appendChild(newElement)
+
+            // WHAT IF WE WANT TO REMOVE THE CLICKED BUTTON?
+            let buttonToRemove = document.getElementById("element-creation-button")
+            buttonToRemove.remove()
+
+
         }
 
     </script>
